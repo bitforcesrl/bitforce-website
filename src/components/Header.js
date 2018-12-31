@@ -72,7 +72,7 @@ const Header = () => (
               <Fragment>
                 {homeLink}
                 <Flex mr={[0, 3, 5]}>
-                <Link to={`/blog`}>Blog</Link>
+                <Link to={`/blog`}>Blog2</Link>
                 {navLinks}
                 </Flex>
               </Fragment>
