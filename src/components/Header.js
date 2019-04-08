@@ -6,9 +6,8 @@ import { SectionLinks } from 'react-scroll-section';
 import Fade from 'react-reveal/Fade';
 import RouteLink from './RouteLink';
 import Logo from './Logo/Portfolio.svg';
-import Link from 'gatsby-link'
+import Link from 'gatsby-link';
 import { cpus } from 'os';
-
 
 const capitalize = s => s && s[0].toUpperCase() + s.slice(1);
 
@@ -73,8 +72,13 @@ const Header = () => (
               <Fragment>
                 {homeLink}
                 <Flex mr={[0, 3, 5]}>
-                <Link to={`/blog`} style={{color: 'white'}}>Blog2</Link>
-                {navLinks}
+                  <Link to={`/blog`} style={{ color: 'white' }}>
+                    Blog2
+                  </Link>
+                  <Link to={`/queries`} style={{ color: 'white' }}>
+                    Queries
+                  </Link>
+                  {navLinks}
                 </Flex>
               </Fragment>
             );

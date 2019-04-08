@@ -10,11 +10,10 @@ const client = contentful.createClient({
 });
 
 module.exports = client.getEntries().then(entries => {
-  const aboutEntry = entries.items.find(
-    entry => entry.sys.contentType.sys.id === 'about',
-  );
-
-  const about = aboutEntry.fields;
+  // const aboutEntry = entries.items.find(
+  //   entry => entry.sys.contentType.sys.id === 'about',
+  // );
+  // const about = aboutEntry.fields;
 
   return {
     plugins: [
@@ -38,12 +37,12 @@ module.exports = client.getEntries().then(entries => {
           accessToken: ACCESS_TOKEN,
         },
       },
-      {
-        resolve: `gatsby-source-medium`,
-        options: {
-          username: about.mediumUser,
-        },
-      },
+      // {
+      //   resolve: `gatsby-source-medium`,
+      //   options: {
+      //     username: about.mediumUser,
+      //   },
+      // },
       'gatsby-transformer-remark',
       'gatsby-plugin-offline',
     ],
