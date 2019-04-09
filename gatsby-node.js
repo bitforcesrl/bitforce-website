@@ -1,42 +1,47 @@
 // const Promise = require('bluebird')
-const path = require('path')
+const path = require('path');
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+  const { createPage } = boundActionCreators;
+  const blogPost = path.resolve('./src/templates/blog-post.jsx');
 
-  return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.jsx')
-    resolve(
-      graphql(
-        `
-          {
-            allContentfulBlogPost {
-              edges {
-                node {
-                  title
-                  slug
+  languages = ['it-IT', 'en-US'];
+
+  languages.forEach(language => {
+    return new Promise((resolve, reject) => {
+      resolve(
+        graphql(
+          `
+            {
+              allContentfulBlogPost {
+                edges {
+                  node {
+                    title
+                    slug
+                  }
                 }
               }
             }
+          `,
+        ).then(result => {
+          if (result.errors) {
+            console.log(result.errors);
+            reject(result.errors);
           }
-          `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
-        }
 
-        const posts = result.data.allContentfulBlogPost.edges
-        posts.forEach((post, index) => {
-          createPage({
-            path: `/blog/${post.node.slug}/`,
-            component: blogPost,
-            context: {
-              slug: post.node.slug
-            },
-          })
-        })
-      })
-    )
-  })
-}
+          const posts = result.data.allContentfulBlogPost.edges;
+          posts.forEach((post, index) => {
+            createPage({
+              path: `/${language}/blog/${post.node.slug}/`,
+              component: blogPost,
+              context: {
+                slug: post.node.slug,
+                language: language,
+              },
+            });
+          });
+        }),
+      );
+    });
+  });
+};
