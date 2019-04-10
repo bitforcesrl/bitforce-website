@@ -1,47 +1,41 @@
 // const Promise = require('bluebird')
 const path = require('path');
+const fs = require('fs');
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
-  const blogPost = path.resolve('./src/templates/blog-post.jsx');
+exports.createPages = ({ actions }) => {
+  const { createPage } = actions;
 
   languages = ['it-IT', 'en-US'];
 
-  languages.forEach(language => {
-    return new Promise((resolve, reject) => {
-      resolve(
-        graphql(
-          `
-            {
-              allContentfulBlogPost {
-                edges {
-                  node {
-                    title
-                    slug
-                  }
-                }
-              }
-            }
-          `,
-        ).then(result => {
-          if (result.errors) {
-            console.log(result.errors);
-            reject(result.errors);
-          }
-
-          const posts = result.data.allContentfulBlogPost.edges;
-          posts.forEach((post, index) => {
-            createPage({
-              path: `/${language}/blog/${post.node.slug}/`,
-              component: blogPost,
-              context: {
-                slug: post.node.slug,
-                language: language,
-              },
-            });
-          });
-        }),
-      );
-    });
+  visit('./src/templates/', (dir, fileDirent) => {
+    if (fileDirent.name.endsWith('.tsx')) {
+      const component = path.resolve(dir + fileDirent.name);
+      let name = fileDirent.name.slice(0, -4);
+      if (name === 'index') {
+        name = '';
+      }
+      languages.forEach(language => {
+        const languageKey = language.split('-')[0];
+        return createPage({
+          path: `/${languageKey}/${name}`,
+          component,
+          context: {
+            language,
+            languageKey,
+          },
+        });
+      });
+    }
   });
 };
+
+function visit(dir, cb) {
+  const dirents = fs.readdirSync(dir, { withFileTypes: true });
+  dirents.forEach(dirent => {
+    if (dirent.isFile()) {
+      cb(dir, dirent);
+    } else if (dirent.isDirectory()) {
+      visit(dir + dirent.name + '/');
+    }
+  });
+}
