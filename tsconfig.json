@@ -1,7 +1,8 @@
 {
+  // "include": ["./src/**/*"],
   "compilerOptions": {
-    "target": "esnext",
     "module": "commonjs",
+    "target": "esnext",
     "jsx": "react",
     "strict": true,
     "esModuleInterop": true,

@@ -19,6 +19,7 @@ module.exports = client.getEntries().then(entries => {
     plugins: [
       'gatsby-plugin-sharp',
       'gatsby-plugin-react-helmet',
+      'gatsby-plugin-typescript',
       {
         resolve: 'gatsby-plugin-manifest',
         options: manifestConfig,

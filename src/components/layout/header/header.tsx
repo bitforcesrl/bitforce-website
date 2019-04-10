@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 
-import styles from './header.module.scss';
+// import styles from './header.module.scss';
 
 export type Props = {};
 export type State = {
@@ -13,6 +13,6 @@ export default class Header extends Component<Props, State> {
   };
 
   render(): React.ReactNode {
-    return <div className={styles.container}>Header</div>;
+    return <div className="">Header</div>;
   }
 }
