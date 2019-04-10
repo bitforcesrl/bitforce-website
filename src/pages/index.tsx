@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
 
-class HomeIndex extends React.Component {
+class HomeIndex extends Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
     const posts = get(this, 'props.data.allContentfulBlogPost.edges');
+
+    console.error(posts);
 
     return (
       <div style={{ background: '#fff' }}>

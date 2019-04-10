@@ -19,11 +19,20 @@ module.exports = client.getEntries().then(entries => {
     plugins: [
       'gatsby-plugin-sharp',
       'gatsby-plugin-react-helmet',
+      'gatsby-plugin-typescript',
       {
         resolve: 'gatsby-plugin-manifest',
         options: manifestConfig,
       },
       'gatsby-plugin-styled-components',
+      {
+        resolve: `gatsby-plugin-sass`,
+        options: {
+          cssLoaderOptions: {
+            camelCase: false,
+          },
+        },
+      },
       {
         resolve: `gatsby-plugin-google-fonts`,
         options: {
