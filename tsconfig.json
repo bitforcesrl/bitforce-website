@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "lib": ["es2018", "esnext", "esnext.asynciterable"],
+    "baseUrl": "./src",
+    "paths": {
+      "@components/": ["components/index"],
+      "@components/*": ["components/*"]
+    }
+  }
+}

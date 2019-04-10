@@ -25,6 +25,14 @@ module.exports = client.getEntries().then(entries => {
       },
       'gatsby-plugin-styled-components',
       {
+        resolve: `gatsby-plugin-sass`,
+        options: {
+          cssLoaderOptions: {
+            camelCase: false,
+          },
+        },
+      },
+      {
         resolve: `gatsby-plugin-google-fonts`,
         options: {
           fonts: [`cabin`, `Open Sans`],
