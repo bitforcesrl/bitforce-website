@@ -3,8 +3,6 @@ import Link from 'gatsby-link';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
 
-// import 'assets/styles/styles.scss';
-
 import '@src/assets/styles/styles.scss';
 
 import { Header } from '@components/layout';
