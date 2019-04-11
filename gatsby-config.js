@@ -9,6 +9,16 @@ const client = contentful.createClient({
   accessToken: ACCESS_TOKEN,
 });
 
+exports.onCreateWebpackConfig = function({ actions }) {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        '@src': path.resolve(__dirname, 'src'),
+      },
+    },
+  });
+};
+
 module.exports = client.getEntries().then(entries => {
   // const aboutEntry = entries.items.find(
   //   entry => entry.sys.contentType.sys.id === 'about',

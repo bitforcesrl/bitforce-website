@@ -40,3 +40,14 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     );
   });
 };
+
+exports.onCreateWebpackConfig = function({ actions }) {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        '@src': path.resolve(__dirname, 'src'),
+        '@components': path.resolve(__dirname, 'src/components'),
+      },
+    },
+  });
+};

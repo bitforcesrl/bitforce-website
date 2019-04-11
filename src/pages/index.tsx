@@ -3,15 +3,20 @@ import Link from 'gatsby-link';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
 
+// import 'assets/styles/styles.scss';
+
+import '@src/assets/styles/styles.scss';
+
+import { Header } from '@components/layout';
+
 class HomeIndex extends Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
     const posts = get(this, 'props.data.allContentfulBlogPost.edges');
 
-    console.error(posts);
-
     return (
       <div style={{ background: '#fff' }}>
+        <Header />
         <Helmet title={siteTitle} />
         <div>Blog</div>
         <div className="wrapper">

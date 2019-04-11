@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import get from 'lodash/get';
 import Img from 'gatsby-image';
 
-// import heroStyles from '../components/hero.module.css'
+import heroStyles from './blog-post.module.scss';
 
-class BlogPostTemplate extends React.Component {
+class BlogPostTemplate extends Component {
   render() {
     const post = get(this.props, 'data.contentfulBlogPost');
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
 
     return (
-      <div>
+      <div className={heroStyles.container}>
         <Helmet title={`${post.title} | ${siteTitle}`} />
         <div>
           <Img alt={post.title} sizes={post.heroImage.sizes} />

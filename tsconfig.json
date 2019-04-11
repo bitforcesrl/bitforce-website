@@ -1,5 +1,4 @@
 {
-  // "include": ["./src/**/*"],
   "compilerOptions": {
     "module": "commonjs",
     "target": "esnext",
@@ -12,10 +11,10 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "lib": ["es2018", "esnext", "esnext.asynciterable"],
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@components/": ["components/index"],
-      "@components/*": ["components/*"]
+      "@src/*": ["src/*"],
+      "@components/*": ["src/components/*"]
     }
   }
 }
