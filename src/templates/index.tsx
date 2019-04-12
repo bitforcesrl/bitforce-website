@@ -3,6 +3,7 @@ import Link from 'gatsby-link';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
+import { Header } from '@src/components';
 
 class HomeIndex extends Component<any> {
   render() {
@@ -12,6 +13,7 @@ class HomeIndex extends Component<any> {
     return (
       <div style={{ background: '#fff' }}>
         <Helmet title={siteTitle} />
+        <Header />
         <div
           dangerouslySetInnerHTML={{
             __html: page.body.childMarkdownRemark.html,
