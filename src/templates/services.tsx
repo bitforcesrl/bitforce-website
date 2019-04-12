@@ -1,9 +1,9 @@
-import React from 'react';
-import Link from 'gatsby-link';
+import React, { Component } from 'react';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
 
-class HomeIndex extends React.Component {
+class HomeIndex extends Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
     const page = get(this, 'props.data.contentfulPage');
@@ -19,9 +19,9 @@ class HomeIndex extends React.Component {
 
 export default HomeIndex;
 
-export const pageQuery = graphql`
-  query ServicesPageIndexEn {
-    contentfulPage(slug: { eq: "services" }, node_locale: { eq: "en-US" }) {
+export const query = graphql`
+  query ServicesPageIndex($language: String) {
+    contentfulPage(slug: { eq: "services" }, node_locale: { eq: $language }) {
       title
       metaDescription {
         childMarkdownRemark {

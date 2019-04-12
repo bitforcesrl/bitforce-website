@@ -4,10 +4,10 @@ import get from 'lodash/get';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 
-class HomeIndex extends Component {
+class HomeIndex extends Component<any> {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
-    const page = get(this, 'props.data.contentfulPage');
+    const page = this.props.data.contentfulPage;
     console.log(this.props['data']);
     return (
       <div style={{ background: '#fff' }}>
@@ -24,7 +24,7 @@ class HomeIndex extends Component {
 
 export default HomeIndex;
 
-export const pippo = graphql`
+export const query = graphql`
   query HomePageIndex($language: String) {
     contentfulPage(slug: { eq: "home-page" }, node_locale: { eq: $language }) {
       title

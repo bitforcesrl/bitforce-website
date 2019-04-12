@@ -10,7 +10,7 @@
     "noEmit": true,
     "skipLibCheck": true,
     "noImplicitAny": false,
-    "lib": ["es2018", "esnext", "esnext.asynciterable"],
+    "lib": ["es2018", "esnext", "esnext.asynciterable", "dom"],
     "baseUrl": ".",
     "paths": {
       "@src/*": ["src/*"],
