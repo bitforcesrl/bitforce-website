@@ -33,6 +33,7 @@
     "@types/react-dom": "^16.8.3",
     "@types/react-helmet": "^5.0.8",
     "babel-plugin-styled-components": "^1.7.1",
+    "bootstrap": "^4.3.1",
     "chalk": "^2.4.1",
     "classnames": "^2.2.6",
     "clean-dir": "^1.0.3",

@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import get from 'lodash/get';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 
-class HomeIndex extends Component {
+export type Props = {
+  data: {
+    contentfulPage: {
+      title: string;
+    };
+  };
+};
+export type State = {};
+class HomeIndex extends Component<Props, State> {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title');
-    const page = get(this, 'props.data.contentfulPage');
+    const data = this.props.data.contentfulPage;
+    console.log(this.props);
 
     return (
-      <div style={{ background: '#fff' }}>
-        <Helmet title={siteTitle} />
-        <div>{page.title}</div>
+      <div className="container-fluid">
+        <Helmet title="TODO" />
+        <h1>{data.title}</h1>
       </div>
     );
   }
@@ -20,8 +27,8 @@ class HomeIndex extends Component {
 export default HomeIndex;
 
 export const query = graphql`
-  query ServicesPageIndex($language: String) {
-    contentfulPage(slug: { eq: "services" }, node_locale: { eq: $language }) {
+  query ServicesPageIndex {
+    contentfulPage(slug: { eq: "services" }) {
       title
       metaDescription {
         childMarkdownRemark {
@@ -31,6 +38,18 @@ export const query = graphql`
       body {
         childMarkdownRemark {
           html
+        }
+      }
+      sections {
+        title {
+          childMarkdownRemark {
+            html
+          }
+        }
+        description {
+          childMarkdownRemark {
+            html
+          }
         }
       }
     }
