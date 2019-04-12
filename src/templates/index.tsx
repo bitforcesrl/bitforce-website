@@ -13,7 +13,7 @@ class HomeIndex extends Component<any> {
     return (
       <div style={{ background: '#fff' }}>
         <Helmet title={siteTitle} />
-        <Header />
+        {/* <Header /> */}
         <div
           dangerouslySetInnerHTML={{
             __html: page.body.childMarkdownRemark.html,
