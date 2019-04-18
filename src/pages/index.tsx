@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Helmet from 'react-helmet';
 
-import '@src/assets/styles/styles.scss';
+// import '@src/assets/styles/styles.scss';
 
 class HomeIndex extends PureComponent {
   componentDidMount() {
